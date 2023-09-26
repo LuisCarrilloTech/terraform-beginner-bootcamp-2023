@@ -1,7 +1,15 @@
 # Terraform Beginner Bootcamp 2023
 
-# This is my 1st change!
+## Semantic Versioning
 
-# This is my 2nd change!
+This project utilizes semantic versioning for its tagging. 
 
-- Terraform Bootcamp 2023
+[Semantic Versioning - semver.org](https://semver.org/)
+
+Given a version number MAJOR.MINOR.PATCH, increment the:
+
+**MAJOR** version when you make incompatible API changes
+**MINOR** version when you add functionality in a backward compatible manner
+**PATCH** version when you make backward compatible bug fixes
+
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
