@@ -2,7 +2,7 @@
 
 ## Semantic Versioning :mage:
 
-This project utilizes semantic versioning for its tagging. 
+This project utilizes semantic versioning for its tagging.
 
 [Semantic Versioning - semver.org](https://semver.org/)
 
@@ -17,7 +17,8 @@ Additional labels for pre-release and build metadata are available as extensions
 ## Install Terraform CLI:
 
 ## Considerations with the Terraform CLI changes
-The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via terraform Documentation and change the scripting for install. 
+
+The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via terraform Documentation and change the scripting for install.
 
 [Terraform installation guide:](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
@@ -26,6 +27,7 @@ The Terraform CLI installation instructions have changed due to gpg keyring chan
 While fixing the Terraform CLI gpg deprecation issues we noticed that bash script steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
 
 This bash script is located here: [./bin/install_terraform_cli](./bin/install_terraform_cli.sh)
+
 - This will keep the Gitpod task file tidy [.gitpod.yml](.gitpod.yml).
 - This allows us an easier to debug the execute manually terraform CLI install
 - This will allow better portability for other products that need to install terraform CLI.
@@ -47,6 +49,7 @@ We can set an env var temporarily when just running a command
 ```sh
 HELLO='world' ./bin/print_message
 ```
+
 Within a bash script we can set env without writing export eg.
 
 ```sh
@@ -72,19 +75,33 @@ We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
 ```sh
 gp evn HELLO='world'
 ```
+
 All future workspaces launched will set the env vars for all bash terminals opened in those workspaces.
 
 You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
 
-### AWS CLI Installation for this project. 
+### AWS CLI Installation for this project.
 
 AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
 
 [Getting Started Install (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 [How to configure AWS ENV Variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
-We can check if our AWS credentials is configured correctly by running the following AWS CLI command: 
+We can check if our AWS credentials is configured correctly by running the following AWS CLI command:
 
 ```sh
 aws sts get-caller-identity
 ```
+
+If it is successful you should see a json payload that looks like this:
+
+```json
+{
+  "UserId": "AROA5K75ZA6WPAERDWJS",
+  "Account": "12345678912",
+  "Arn": "arn:aws:iam::12345678912:user/
+  terraform-beginner-bootcamp"
+}
+```
+
+We'll need to generate AWS CLI credentials from IAM User in order to use AWS CLI.
